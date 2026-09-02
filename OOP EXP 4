@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+class Complex {
+float real, imag;
+public:
+// Constructor
+Complex(float r = 0, float i = 0) {
+real = r;
+imag = i;
+}
+
+// Function to calculate cube
+Complex cube() {
+Complex result;
+
+// (a + bi)^3 = (a^3 - 3ab^2) + (3a^2b - b^3)i
+result.real = real * real * real - 3 * real * imag * imag;
+result.imag = 3 * real * real * imag - imag * imag * imag;
+
+return result;
+}
+
+// Function to display complex number
+void display() {
+cout << resultFormat(real) << " + " << imag << "i";
+}
+
+private:
+float resultFormat(float value) {
+return value;
+}
+};
+
+int main() {
+float real, imag;
+
+cout << "Enter real part: ";
+cin >> real;
+
+cout << "Enter imaginary part: ";
+cin >> imag;
+
+Complex c(real, imag);
+Complex cube = c.cube();
+
+cout << "Cube of the complex number = ";
+cube.display();
+
+return 0;
+}
