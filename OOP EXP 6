@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+class Complex {
+    float real, imag;
+
+public:
+    // Function to accept complex number
+    void Accept() {
+        cout << "Enter real part: ";
+        cin >> real;
+
+        cout << "Enter imaginary part: ";
+        cin >> imag;
+    }
+
+    // Function to display complex number
+    void Display() {
+        cout << real;
+
+        if (imag >= 0)
+            cout << " + " << imag << "i";
+        else
+            cout << " - " << -imag << "i";
+
+        cout << endl;
+    }
+
+    // Overloading -= operator
+    void operator-=(Complex c) {
+        real = real - c.real;
+        imag = imag - c.imag;
+    }
+};
+
+int main() {
+    Complex c1, c2;
+
+    cout << "Enter first complex number:\n";
+    c1.Accept();
+
+    cout << "\nEnter second complex number:\n";
+    c2.Accept();
+
+    c1 -= c2;
+
+    cout << "\nResult after subtraction: ";
+    c1.Display();
+
+    return 0;
+}
