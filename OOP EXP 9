@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Ticket {
+public:
+    // Virtual function
+    virtual void calculateFare() {
+        cout << "Calculating ticket fare..." << endl;
+    }
+
+    virtual ~Ticket() {}
+};
+
+// Derived class: BusTicket
+class BusTicket : public Ticket {
+public:
+    void calculateFare() override {
+        int distance;
+        cout << "Enter bus journey distance (km): ";
+        cin >> distance;
+
+        double fare = distance * 2.5;
+        cout << "Bus Ticket Fare: Rs. " << fare << endl;
+    }
+};
+
+// Derived class: FlightTicket
+class FlightTicket : public Ticket {
+public:
+    void calculateFare() override {
+        int distance;
+        cout << "Enter flight distance (km): ";
+        cin >> distance;
+
+        double fare = distance * 8.0;
+        cout << "Flight Ticket Fare: Rs. " << fare << endl;
+    }
+};
+
+int main() {
+    Ticket* ticket;  // Base class pointer
+
+    BusTicket bus;
+    FlightTicket flight;
+
+    // Runtime polymorphism
+    ticket = &bus;
+    ticket->calculateFare();
+
+    cout << endl;
+
+    ticket = &flight;
+    ticket->calculateFare();
+
+    return 0;
+}
+
