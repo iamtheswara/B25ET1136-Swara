@@ -9,50 +9,69 @@ public:
         cout << "Calculating ticket fare..." << endl;
     }
 
+    // Virtual destructor
     virtual ~Ticket() {}
 };
 
-// Derived class: BusTicket
+// Derived class for bus
 class BusTicket : public Ticket {
 public:
+    // Override calculateFare()
     void calculateFare() override {
         int distance;
+
+        // Input distance
         cout << "Enter bus journey distance (km): ";
         cin >> distance;
 
+        // Calculate bus fare
         double fare = distance * 2.5;
+
+        // Display fare
         cout << "Bus Ticket Fare: Rs. " << fare << endl;
     }
 };
 
-// Derived class: FlightTicket
+// Derived class for flight
 class FlightTicket : public Ticket {
 public:
+    // Override calculateFare()
     void calculateFare() override {
         int distance;
+
+        // Input distance
         cout << "Enter flight distance (km): ";
         cin >> distance;
 
+        // Calculate flight fare
         double fare = distance * 8.0;
+
+        // Display fare
         cout << "Flight Ticket Fare: Rs. " << fare << endl;
     }
 };
 
 int main() {
-    Ticket* ticket;  // Base class pointer
+    // Base class pointer
+    Ticket* ticket;
 
+    // Create objects
     BusTicket bus;
     FlightTicket flight;
 
-    // Runtime polymorphism
+    // Point to BusTicket
     ticket = &bus;
+
+    // Call BusTicket function
     ticket->calculateFare();
 
     cout << endl;
 
+    // Point to FlightTicket
     ticket = &flight;
+
+    // Call FlightTicket function
     ticket->calculateFare();
 
     return 0;
 }
-
